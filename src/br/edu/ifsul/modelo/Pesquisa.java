@@ -1,13 +1,18 @@
 package br.edu.ifsul.modelo;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.List;
 import java.util.Objects;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
@@ -41,6 +46,12 @@ public class Pesquisa implements Serializable{
     @Temporal(TemporalType.DATE)
     @Column(name = "data_termino", nullable = false)
     private Calendar data_termino;
+    @OneToMany(mappedBy = "pesquisa", cascade = CascadeType.ALL, 
+            orphanRemoval = true, fetch = FetchType.LAZY)
+    private List<Aluno> alunos = new ArrayList<>();
+    @OneToMany(mappedBy = "pesquisa", cascade = CascadeType.ALL, 
+            orphanRemoval = true, fetch = FetchType.LAZY)
+    private List<Professor> professores = new ArrayList<>();
 
     public Integer getId() {
         return id;
@@ -74,6 +85,7 @@ public class Pesquisa implements Serializable{
         this.data_termino = data_termino;
     }
 
+        
     @Override
     public int hashCode() {
         int hash = 5;
@@ -97,6 +109,22 @@ public class Pesquisa implements Serializable{
             return false;
         }
         return true;
+    }
+
+    public List<Aluno> getAlunos() {
+        return alunos;
+    }
+
+    public void setAlunos(List<Aluno> alunos) {
+        this.alunos = alunos;
+    }
+
+    public List<Professor> getProfessores() {
+        return professores;
+    }
+
+    public void setProfessores(List<Professor> professores) {
+        this.professores = professores;
     }
     
 }

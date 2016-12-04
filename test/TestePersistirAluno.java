@@ -37,7 +37,7 @@ public class TestePersistirAluno {
         boolean exception = false;
         try {
             Aluno obj = new Aluno();
-            obj.setNome("Pedro");
+            obj.setNome("Bruna");
             obj.setEndereco("R. das Jabuticabas");
             obj.setData_ingresso(Calendar.getInstance());
             obj.setMatricula(123456789);

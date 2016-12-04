@@ -39,7 +39,7 @@ public class TestePesquisa {
         boolean exception = false;
         try {
             Pesquisa obj = new Pesquisa();
-            obj.setNome("Nome da pesquisa");
+            obj.setNome("Nome da pesquisa 2");
             obj.setData_inicio(Calendar.getInstance());
             obj.setData_termino(Calendar.getInstance());
             em.getTransaction().begin();
